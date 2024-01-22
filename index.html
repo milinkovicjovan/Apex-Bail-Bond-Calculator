@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #calculator-body {
+        text-align: center;
+        margin: 50px;
+      }
+      #amount-label {
+        margin-right: 15px;
+      }
+      #amount {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      #calculate-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      #result {
+        margin-top: 20px;
+        font-size: 18px;
+        color: green;
+      }
+    </style>
+    <title>Down Payment Calculator</title>
+  </head>
+  <body id="calculator-body">
+    <h1>Down Payment Calculator</h1>
+
+    <label id="amount-label" for="amount">Enter Amount:</label>
+    <input type="number" id="amount" placeholder="Enter amount" />
+
+    <button id="calculate-button" onclick="calculateDownPayment()">
+      Calculate
+    </button>
+
+    <div id="result"></div>
+
+    <script>
+      function calculateDownPayment() {
+        var amount = parseFloat(document.getElementById("amount").value);
+        var downPayment;
+
+        if (amount < 2500) {
+          downPayment = amount * 0.15;
+        } else if (amount >= 2500 && amount <= 5000) {
+          downPayment = amount * 0.1;
+        } else {
+          downPayment = amount * 0.05;
+        }
+
+        displayResult(downPayment);
+      }
+
+      function displayResult(downPayment) {
+        var resultElement = document.getElementById("result");
+        resultElement.textContent = "Down Payment: $" + downPayment.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
